@@ -1,0 +1,12 @@
+
+.top-bar {
+  display: flex;
+
+  color: white;
+  background-color: #8B2B2B;
+  font-family: Inter, sans-serif, Arial;
+
+  align-items: start;
+  justify-content: flex-start;
+
+}
