@@ -1,0 +1,555 @@
+{
+  "openapi": "3.0.0",
+  "paths": {
+    "/api": {
+      "get": {
+        "operationId": "AppController_getHello",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "The status of the Picture-Drop backend",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Get the status of the Picture-Drop backend",
+        "tags": [
+          "App"
+        ]
+      }
+    },
+    "/api/users": {
+      "get": {
+        "operationId": "UsersController_findAll",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "All users",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/User"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "Get all users",
+        "tags": [
+          "Users - Controller"
+        ]
+      }
+    },
+    "/api/users/{id}": {
+      "get": {
+        "operationId": "UsersController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A user",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Get a user by ID",
+        "tags": [
+          "Users - Controller"
+        ]
+      },
+      "delete": {
+        "operationId": "UsersController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The user was deleted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Delete a user by ID",
+        "tags": [
+          "Users - Controller"
+        ]
+      }
+    },
+    "/api/vouchers": {
+      "get": {
+        "operationId": "VouchersController_findAll",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "All vouchers",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Vouchers"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "Get all vouchers",
+        "tags": [
+          "Vouchers - Controller"
+        ]
+      }
+    },
+    "/api/vouchers/{id}": {
+      "get": {
+        "operationId": "VouchersController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A voucher",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Vouchers"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Get a voucher by ID",
+        "tags": [
+          "Vouchers - Controller"
+        ]
+      },
+      "delete": {
+        "operationId": "VouchersController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The voucher was deleted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Vouchers"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Delete a voucher by ID",
+        "tags": [
+          "Vouchers - Controller"
+        ]
+      }
+    },
+    "/api/workspaces": {
+      "get": {
+        "operationId": "WorkspacesController_findAll",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "All workspaces",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Workspaces"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "Get all workspaces",
+        "tags": [
+          "Workspaces - Controller"
+        ]
+      }
+    },
+    "/api/workspaces/{id}": {
+      "get": {
+        "operationId": "WorkspacesController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A workspace",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Workspaces"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Get a workspace by ID",
+        "tags": [
+          "Workspaces - Controller"
+        ]
+      },
+      "delete": {
+        "operationId": "WorkspacesController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The workspace was deleted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Workspaces"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Delete a workspace by ID",
+        "tags": [
+          "Workspaces - Controller"
+        ]
+      }
+    },
+    "/api/submission-items": {
+      "get": {
+        "operationId": "SubmissionItemsController_findAll",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "All submission items",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "Get all submission items",
+        "tags": [
+          "Submission Items - Controller"
+        ]
+      }
+    },
+    "/api/submission-items/{id}": {
+      "get": {
+        "operationId": "SubmissionItemsController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A submission item",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Get a submission item by ID",
+        "tags": [
+          "Submission Items - Controller"
+        ]
+      },
+      "delete": {
+        "operationId": "SubmissionItemsController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The submission item was deleted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Delete a submission item by ID",
+        "tags": [
+          "Submission Items - Controller"
+        ]
+      }
+    },
+    "/api/submissions": {
+      "get": {
+        "operationId": "SubmissionsController_findAll",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "All submissions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Submission"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "Get all submissions",
+        "tags": [
+          "Submissions - Controller"
+        ]
+      }
+    },
+    "/api/submissions/{id}": {
+      "get": {
+        "operationId": "SubmissionsController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A submission",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Submission"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Get a submission by ID",
+        "tags": [
+          "Submissions - Controller"
+        ]
+      },
+      "delete": {
+        "operationId": "SubmissionsController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The submission was deleted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Submission"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Delete a submission by ID",
+        "tags": [
+          "Submissions - Controller"
+        ]
+      }
+    }
+  },
+  "info": {
+    "title": "Picture Drop API",
+    "description": "Backend Endpoints for Picture Drop",
+    "version": "1.0",
+    "contact": {
+
+    }
+  },
+  "tags": [],
+  "servers": [],
+  "components": {
+    "schemas": {
+      "User": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string"
+          },
+          "Username": {
+            "type": "string"
+          },
+          "FirstName": {
+            "type": "string"
+          },
+          "LastName": {
+            "type": "string"
+          },
+          "Email": {
+            "type": "string"
+          },
+          "StripeCustomerId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "Id",
+          "Username",
+          "FirstName",
+          "LastName",
+          "Email",
+          "StripeCustomerId"
+        ]
+      },
+      "Vouchers": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string"
+          },
+          "WorkspaceId": {
+            "type": "string"
+          },
+          "ValidatedOn": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "Id",
+          "WorkspaceId",
+          "ValidatedOn"
+        ]
+      },
+      "Workspaces": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string"
+          },
+          "Name": {
+            "type": "string"
+          },
+          "Description": {
+            "type": "string"
+          },
+          "SubscriptionStatus": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "Id",
+          "Name",
+          "Description",
+          "SubscriptionStatus"
+        ]
+      },
+      "Submission": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string"
+          },
+          "WorkspaceId": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "Id",
+          "WorkspaceId"
+        ]
+      }
+    }
+  }
+}

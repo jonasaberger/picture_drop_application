@@ -7,6 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
+    "generate-api": "ng-openapi-gen --input files/openapi.json --output libs/src/app/api",
     "serve:ssr:picture-drop-frontend": "node dist/picture-drop-frontend/server/server.mjs"
   },
   "private": true,
@@ -21,6 +22,7 @@
     "@angular/router": "^19.2.0",
     "@angular/ssr": "^19.2.3",
     "express": "^4.18.2",
+    "ng-openapi-gen": "^0.52.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
