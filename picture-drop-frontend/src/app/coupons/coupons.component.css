@@ -1,0 +1,104 @@
+.dashboard-container {
+  font-family: Arial, sans-serif;
+  max-width: 150vh;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.company-selector {
+  margin-bottom: 20px;
+}
+
+.company-selector label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.company-selector select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.workspace-list-container {
+  min-height: 60vh;
+  overflow-y: auto;
+  margin-bottom: 20px;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.workspace-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.workspace-item:last-child {
+  border-bottom: none;
+}
+
+.workspace-name {
+  flex: 1;
+  font-weight: bold;
+}
+
+.coupon-boxes {
+  display: flex;
+  gap: 10px;
+}
+
+.coupon-box {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+.redeemed {
+  background-color: #4CAF50; /* Green */
+  color: white;
+}
+
+.unredeemed {
+  background-color: #F44336; /* Red */
+  color: white;
+}
+
+.stats-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.total-stats div {
+  margin-bottom: 5px;
+}
+
+.legend {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.legend-color {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+}
