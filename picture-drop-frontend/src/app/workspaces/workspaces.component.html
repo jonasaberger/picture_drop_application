@@ -1,0 +1,45 @@
+<div class="dashboard-container">
+  <!-- Unternehmen Auswahl -->
+  <div class="company-selector">
+    <label for="company"><b>Choose Company</b></label>
+    <select id="company" [(ngModel)]="selectedCompany">
+      <option value="">-- Select a Company --</option>
+      <option *ngFor="let company of companies" [value]="company">
+        {{ company }}
+      </option>
+    </select>
+  </div>
+
+  <!-- Workspace-Liste -->
+  <div class="workspace-list">
+    <div *ngFor="let workspace of workspaces" class="workspace-item">
+      <span class="status-icon" [ngClass]="{ 'active': workspace.isActive, 'inactive': !workspace.isActive }">
+        ★
+      </span>
+      <span class="workspace-name">{{ workspace.name }}</span>
+      <div class="workspace-details">
+        <span>{{ workspace.videos }} Vids</span>
+        <div>   </div>
+        <span>{{ workspace.pictures }} Pics</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Statistik -->
+  <div class="stats-container">
+    <div class="total-stats">
+      <div>Total Active Workplaces: {{ totalActive }}</div>
+      <div>Total Inactive Workplaces: {{ totalInactive }}</div>
+    </div>
+
+    <!-- Legende -->
+    <div class="legend">
+      <div class="legend-item">
+        <span class="status-icon active">★</span> Active
+      </div>
+      <div class="legend-item">
+        <span class="status-icon inactive">★</span> Inactive
+      </div>
+    </div>
+  </div>
+</div>
