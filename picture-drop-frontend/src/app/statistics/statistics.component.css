@@ -1,0 +1,65 @@
+.dashboard-container {
+  font-family: Arial, sans-serif;
+  max-width: 150vh;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.company-selector {
+  margin-bottom: 20px;
+}
+.company-selector select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+
+.sub-selectors-container {
+  display: flex;
+  justify-content: right;
+
+}
+
+.sub-selector {
+  margin-bottom: 20px;
+  margin-left: 40px;
+}
+
+.sub-selector select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+
+.workspace-list-container {
+  min-height: 60vh;
+  overflow-y: auto;
+  margin-bottom: 20px;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.workspace-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.workspace-item:last-child {
+  border-bottom: none;
+}
+
+.workspace-name {
+  flex: 1;
+  font-weight: bold;
+}
+
