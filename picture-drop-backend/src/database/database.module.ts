@@ -18,9 +18,9 @@ import { Submission } from 'src/submissions/entities/submission.entity';
         type: 'postgres',
         host: configService.get('DB_HOST'),
         port: configService.get('DB_PORT'),
-        username: configService.get('DB_USERNAME'),
-        password: configService.get('DB_PASSWORD'),
-        database: configService.get('DB_DATABASE'),
+        username: 'myuser',
+        password: 'mypassword',
+        database: 'mydb',
         entities: [User, Workspaces, Vouchers, SubmissionItem, Submission],
         synchronize: false, // Be cautious about using synchronize in production
       }),

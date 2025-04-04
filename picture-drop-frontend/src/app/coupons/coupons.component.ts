@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import {FormsModule} from '@angular/forms';
 import {NgForOf} from '@angular/common';
+import { WorkspacesControllerService } from '../../../libs/src/app/api/services/workspaces-controller.service';
 
 interface Workspace {
   name: string;
@@ -32,6 +33,8 @@ export class CouponsComponent {
     { name: 'Workspace 8', redeemedCoupons: 3, unredeemedCoupons: 3 }
   ];
 
+  constructor(private workspacesService: WorkspacesControllerService) {}
+
   get totalCoupons(): number {
     return this.workspaces.reduce((total, ws) => total + ws.redeemedCoupons + ws.unredeemedCoupons, 0);
   }
@@ -42,5 +45,21 @@ export class CouponsComponent {
 
   get totalUnredeemed(): number {
     return this.workspaces.reduce((total, ws) => total + ws.unredeemedCoupons, 0);
+  }
+
+  getAllWorkspaces() {
+    this.workspacesService.workspacesControllerFindAll().subscribe(
+      (data: any[]) => {
+        this.workspaces = data; // Store the fetched data in the submissions array
+        console.log('Submissions:', this.workspaces);
+      },
+      (error) => {
+        console.error('Error fetching submissions:', error);
+      }
+    );
+  }
+
+  handleGetWorkspaces(){
+    this.getAllWorkspaces();
   }
 }
