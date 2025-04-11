@@ -20,7 +20,5 @@ export class SubmissionItem {
     @ApiProperty()
     CreatedOn: Date;
 
-    @Column()
-    @ApiProperty()
-    WorkspaceId: number; // TODO: WorkspaceId hinzufügen mittels JOIN-Column über die SubmissionId
+
 }
