@@ -1,35 +1,62 @@
 <div class="dashboard-container">
-
   <div class="options-selector">
-      <div class="company-selector">
-        <select id="company" [(ngModel)]="selectedCompany">
-          <option value="" disabled selected>Choose Company</option>
-          <option *ngFor="let company of companies" [value]="company">{{company}}</option>
+    <!-- Company Selector -->
+    <div class="company-selector">
+      <select id="company" [(ngModel)]="selectedCompany" (ngModelChange)="onCompanyChange()">
+        <option value="">All Companies</option>
+        <option *ngFor="let company of availableCompanies"
+                [value]="company"
+                [disabled]="shouldDisableOption('company', company)">
+          {{ company }}
+        </option>
+      </select>
+    </div>
+
+    <!-- Workspace, Type, and Year Selectors -->
+    <div class="sub-selectors-container">
+      <div class="sub-selector">
+        <select [(ngModel)]="selectedWorkspace" (ngModelChange)="applyFilters()">
+          <option value="">All Workspaces</option>
+          <option *ngFor="let workspace of availableWorkspaces"
+                  [value]="workspace.Name"
+                  [disabled]="shouldDisableOption('workspace', workspace.Name)">
+            {{ workspace.Name }}
+          </option>
         </select>
       </div>
 
-      <div class="sub-selectors-container">
-        <div class="sub-selector">
-          <select>
-            <option value="" disabled selected>each Workspace</option>
-            <option>Workspace X</option>
-          </select>
-        </div>
-        <div class="sub-selector">
-          <select>
-            <option value="" disabled selected>UploadType</option>
-          </select>
-        </div>
-        <div class="sub-selector">
-          <select>
-            <option value="" disabled selected>Year</option>
-          </select>
-        </div>
+      <div class="sub-selector">
+        <select [(ngModel)]="selectedUploadType" (ngModelChange)="applyFilters()">
+          <option value="">All Types</option>
+          <option *ngFor="let type of availableUploadTypes"
+                  [value]="type"
+                  [disabled]="shouldDisableOption('uploadType', type)">
+            {{ type }}
+          </option>
+        </select>
       </div>
+
+      <div class="sub-selector">
+        <select [(ngModel)]="selectedYear" (ngModelChange)="applyFilters()">
+          <option value="">All Years</option>
+          <option *ngFor="let year of availableYears"
+                  [value]="year"
+                  [disabled]="shouldDisableOption('year', year)">
+            {{ year }}
+          </option>
+        </select>
+      </div>
+    </div>
   </div>
 
-  <div class="statistic-container">
+  <!-- Chart Section -->
+  <div class="chart-container" *ngIf="filteredSubmissionItems.length > 0">
+    <h3>Monthly Uploads</h3>
+    <canvas #chartCanvas></canvas>
+  </div>
 
-
+  <!-- No Results Message -->
+  <div class="no-results" *ngIf="filteredSubmissionItems.length === 0 && (selectedCompany || selectedWorkspace || selectedUploadType || selectedYear)">
+    <p>No submission items match the current filters.</p>
   </div>
 </div>
