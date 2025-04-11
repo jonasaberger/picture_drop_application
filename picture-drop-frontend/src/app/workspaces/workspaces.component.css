@@ -8,6 +8,12 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   background-color: #fff;
 }
+select {
+  position: sticky;
+  top: 0;
+  z-index: 10;  /* Damit das Menü über anderen Inhalten bleibt */
+  background-color: white;
+}
 
 .company-selector {
   margin-bottom: 20px;

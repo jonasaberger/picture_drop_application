@@ -81,11 +81,11 @@ export class WorkspacesComponent implements OnInit {
   }
 
   aggregateStats(submissions: Submission[], submissionItems: SubmissionItem[]): void {
-    // 🔄 2a. SubmissionId → WorkspaceId
+    // 2a. SubmissionId → WorkspaceId
     const submissionToWorkspace = new Map<number, number>();
     submissions.forEach(s => submissionToWorkspace.set(s.Id, s.WorkspaceId));
 
-    // 🔄 2b. WorkspaceId → Statistik
+    // 2b. WorkspaceId → Statistik
     const workspaceStats = new Map<number, { pictures: number; videos: number }>();
 
     submissionItems.forEach(item => {
@@ -104,7 +104,7 @@ export class WorkspacesComponent implements OnInit {
       }
     });
 
-    // 🔄 2c. Workspace-Objekte anreichern
+    // 2c. Workspace-Objekte anreichern
     this.workspaces.forEach(ws => {
       const stats = workspaceStats.get(ws.Id) ?? { pictures: 0, videos: 0 };
       ws.isActive = ws.SubscriptionStatus === "Active";
@@ -113,7 +113,7 @@ export class WorkspacesComponent implements OnInit {
     });
   }
 
-  // 🔄 3. Filter nach Firma
+  // 3. Filter nach Firma
   filterWorkspaces(): void {
 
     if (this.selectedCompany === "all") {
@@ -124,7 +124,7 @@ export class WorkspacesComponent implements OnInit {
     }
   }
 
-  // 🔄 4. Gesamtsummen berechnen
+  //4. Gesamtsummen berechnen
   get totalActive(): number {
     return this.filteredWorkspaces.filter(ws => ws.isActive).length;
   }
@@ -141,7 +141,7 @@ export class WorkspacesComponent implements OnInit {
     return this.filteredWorkspaces.reduce((sum, ws) => sum + (ws.videos || 0), 0);
   }
 
-  // 🔄 5. Wenn eine Firma ausgewählt wird, werden die Daten neu geladen
+  //5. Wenn eine Firma ausgewählt wird, werden die Daten neu geladen
   onCompanyChange(): void {
     this.filterWorkspaces(); // Workspaces filtern, wenn die Firma geändert wird
   }
