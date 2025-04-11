@@ -4,28 +4,11 @@ import { FormsModule } from "@angular/forms";
 import { NgForOf, NgClass } from "@angular/common";
 import { ChangeDetectorRef } from "@angular/core";
 
-// Interfaces
-interface Workspace {
-  Id: number;
-  Name: string;
-  CompanyName: string;
-  SubscriptionStatus: string;
-  isActive?: boolean;
-  pictures?: number;
-  videos?: number;
-}
+import {Workspace} from '../../../libs/src/app/api/models/workspace';
+import {Submission} from '../../../libs/src/app/api/models/submission';
+import {SubmissionItem} from '../../../libs/src/app/api/models/submission-item';
 
-interface Submission {
-  Id: number;
-  WorkspaceId: number;
-}
-
-interface SubmissionItem {
-  Id: number;
-  SubmissionId: number;
-  ContentType: string;
-  CreatedOn: Date;
-}
+import {aggregateStats} from '../../../libs/src/app/api/services/aggregation.service';
 
 @Component({
   selector: "app-workspaces",
@@ -35,7 +18,7 @@ interface SubmissionItem {
   styleUrl: "./workspaces.component.css",
 })
 export class WorkspacesComponent implements OnInit {
-  selectedCompany: string = "SPS";
+  selectedCompany: string = "All";
   companies: string[] = [];
   workspaces: Workspace[] = [];
   filteredWorkspaces: Workspace[] = [];
@@ -51,25 +34,25 @@ export class WorkspacesComponent implements OnInit {
     try {
       this.isLoading = true;
 
-      // 🔄 1. Alle Daten gleichzeitig laden
+      // Initiales Laden aller Daten
       const [workspaces, submissions, submissionItems] = await Promise.all([
         this.http.get<Workspace[]>("http://localhost:3000/api/workspaces").toPromise(),
         this.http.get<Submission[]>("http://localhost:3000/api/submissions").toPromise(),
         this.http.get<SubmissionItem[]>("http://localhost:3000/api/submission-items").toPromise(),
       ]);
 
-      // Überprüfen, ob die Daten erfolgreich geladen wurden
+      // Überprüfen ob die Daten erfolgreich geladen wurden
       if (!workspaces || !submissions || !submissionItems) {
         throw new Error("Einige Daten konnten nicht geladen werden.");
       }
 
       this.workspaces = workspaces;
-      this.companies = ["all", ...new Set(workspaces.map(ws => ws.CompanyName))];
+      this.companies = ["All", ...new Set(workspaces.map(ws => ws.CompanyName))];
 
-      // 🔄 2. Aggregation im Frontend
-      this.aggregateStats(submissions, submissionItems);
+      // Aggregation-Funktion aus dem Frontend
+      aggregateStats(workspaces,submissions,submissionItems);
 
-      // 🔄 3. Workspaces filtern
+      // Filtern der Workspaces
       this.filterWorkspaces();
 
       this.isLoading = false;
@@ -80,43 +63,10 @@ export class WorkspacesComponent implements OnInit {
     }
   }
 
-  aggregateStats(submissions: Submission[], submissionItems: SubmissionItem[]): void {
-    // 2a. SubmissionId → WorkspaceId
-    const submissionToWorkspace = new Map<number, number>();
-    submissions.forEach(s => submissionToWorkspace.set(s.Id, s.WorkspaceId));
-
-    // 2b. WorkspaceId → Statistik
-    const workspaceStats = new Map<number, { pictures: number; videos: number }>();
-
-    submissionItems.forEach(item => {
-      const workspaceId = submissionToWorkspace.get(item.SubmissionId);
-      if (!workspaceId) return;
-
-      if (!workspaceStats.has(workspaceId)) {
-        workspaceStats.set(workspaceId, { pictures: 0, videos: 0 });
-      }
-
-      const stats = workspaceStats.get(workspaceId)!;
-      if (item.ContentType.startsWith("image/")) {
-        stats.pictures++;
-      } else if (item.ContentType.startsWith("video/")) {
-        stats.videos++;
-      }
-    });
-
-    // 2c. Workspace-Objekte anreichern
-    this.workspaces.forEach(ws => {
-      const stats = workspaceStats.get(ws.Id) ?? { pictures: 0, videos: 0 };
-      ws.isActive = ws.SubscriptionStatus === "Active";
-      ws.pictures = stats.pictures;
-      ws.videos = stats.videos;
-    });
-  }
-
   // 3. Filter nach Firma
   filterWorkspaces(): void {
 
-    if (this.selectedCompany === "all") {
+    if (this.selectedCompany === "All") {
       this.filteredWorkspaces = [...this.workspaces];
     } else {
       console.log("apply filter")

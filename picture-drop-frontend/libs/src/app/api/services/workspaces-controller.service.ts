@@ -11,7 +11,7 @@ import { BaseService } from '../base-service';
 import { ApiConfiguration } from '../api-configuration';
 import { StrictHttpResponse } from '../strict-http-response';
 
-import { Workspaces } from '../models/workspaces';
+import {Workspace} from '../models/workspace';
 import { workspacesControllerFindAll } from '../fn/workspaces-controller/workspaces-controller-find-all';
 import { WorkspacesControllerFindAll$Params } from '../fn/workspaces-controller/workspaces-controller-find-all';
 import { workspacesControllerFindOne } from '../fn/workspaces-controller/workspaces-controller-find-one';
@@ -38,7 +38,7 @@ export class WorkspacesControllerService extends BaseService {
    *
    * This method doesn't expect any request body.
    */
-  workspacesControllerFindAll$Response(params?: WorkspacesControllerFindAll$Params, context?: HttpContext): Observable<StrictHttpResponse<Array<Workspaces>>> {
+  workspacesControllerFindAll$Response(params?: WorkspacesControllerFindAll$Params, context?: HttpContext): Observable<StrictHttpResponse<Array<Workspace>>> {
     return workspacesControllerFindAll(this.http, this.rootUrl, params, context);
   }
 
@@ -52,9 +52,9 @@ export class WorkspacesControllerService extends BaseService {
    *
    * This method doesn't expect any request body.
    */
-  workspacesControllerFindAll(params?: WorkspacesControllerFindAll$Params, context?: HttpContext): Observable<Array<Workspaces>> {
+  workspacesControllerFindAll(params?: WorkspacesControllerFindAll$Params, context?: HttpContext): Observable<Array<Workspace>> {
     return this.workspacesControllerFindAll$Response(params, context).pipe(
-      map((r: StrictHttpResponse<Array<Workspaces>>): Array<Workspaces> => r.body)
+      map((r: StrictHttpResponse<Array<Workspace>>): Array<Workspace> => r.body)
     );
   }
 
@@ -71,7 +71,7 @@ export class WorkspacesControllerService extends BaseService {
    *
    * This method doesn't expect any request body.
    */
-  workspacesControllerFindOne$Response(params: WorkspacesControllerFindOne$Params, context?: HttpContext): Observable<StrictHttpResponse<Workspaces>> {
+  workspacesControllerFindOne$Response(params: WorkspacesControllerFindOne$Params, context?: HttpContext): Observable<StrictHttpResponse<Workspace>> {
     return workspacesControllerFindOne(this.http, this.rootUrl, params, context);
   }
 
@@ -85,9 +85,9 @@ export class WorkspacesControllerService extends BaseService {
    *
    * This method doesn't expect any request body.
    */
-  workspacesControllerFindOne(params: WorkspacesControllerFindOne$Params, context?: HttpContext): Observable<Workspaces> {
+  workspacesControllerFindOne(params: WorkspacesControllerFindOne$Params, context?: HttpContext): Observable<Workspace> {
     return this.workspacesControllerFindOne$Response(params, context).pipe(
-      map((r: StrictHttpResponse<Workspaces>): Workspaces => r.body)
+      map((r: StrictHttpResponse<Workspace>): Workspace => r.body)
     );
   }
 
@@ -104,7 +104,7 @@ export class WorkspacesControllerService extends BaseService {
    *
    * This method doesn't expect any request body.
    */
-  workspacesControllerRemove$Response(params: WorkspacesControllerRemove$Params, context?: HttpContext): Observable<StrictHttpResponse<Workspaces>> {
+  workspacesControllerRemove$Response(params: WorkspacesControllerRemove$Params, context?: HttpContext): Observable<StrictHttpResponse<Workspace>> {
     return workspacesControllerRemove(this.http, this.rootUrl, params, context);
   }
 
@@ -118,9 +118,9 @@ export class WorkspacesControllerService extends BaseService {
    *
    * This method doesn't expect any request body.
    */
-  workspacesControllerRemove(params: WorkspacesControllerRemove$Params, context?: HttpContext): Observable<Workspaces> {
+  workspacesControllerRemove(params: WorkspacesControllerRemove$Params, context?: HttpContext): Observable<Workspace> {
     return this.workspacesControllerRemove$Response(params, context).pipe(
-      map((r: StrictHttpResponse<Workspaces>): Workspaces => r.body)
+      map((r: StrictHttpResponse<Workspace>): Workspace => r.body)
     );
   }
 
