@@ -8,13 +8,13 @@ import { filter, map } from 'rxjs/operators';
 import { StrictHttpResponse } from '../../strict-http-response';
 import { RequestBuilder } from '../../request-builder';
 
-import { Workspaces } from '../../models/workspaces';
+import { Workspace } from '../../models/workspace';
 
 export interface WorkspacesControllerRemove$Params {
   id: string;
 }
 
-export function workspacesControllerRemove(http: HttpClient, rootUrl: string, params: WorkspacesControllerRemove$Params, context?: HttpContext): Observable<StrictHttpResponse<Workspaces>> {
+export function workspacesControllerRemove(http: HttpClient, rootUrl: string, params: WorkspacesControllerRemove$Params, context?: HttpContext): Observable<StrictHttpResponse<Workspace>> {
   const rb = new RequestBuilder(rootUrl, workspacesControllerRemove.PATH, 'delete');
   if (params) {
     rb.path('id', params.id, {});
@@ -25,7 +25,7 @@ export function workspacesControllerRemove(http: HttpClient, rootUrl: string, pa
   ).pipe(
     filter((r: any): r is HttpResponse<any> => r instanceof HttpResponse),
     map((r: HttpResponse<any>) => {
-      return r as StrictHttpResponse<Workspaces>;
+      return r as StrictHttpResponse<Workspace>;
     })
   );
 }
