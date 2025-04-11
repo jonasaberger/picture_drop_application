@@ -2,8 +2,8 @@
   <!-- Unternehmen Auswahl -->
   <div class="company-selector">
     <label for="company"><b>Choose Company</b></label>
-    <select id="company" [(ngModel)]="selectedCompany"  (ngModelChange)="onCompanyChange()">
-      <option value="">-- Select a Company --</option>
+    <select id="company" [(ngModel)]="selectedCompany" (ngModelChange)="onCompanyChange()">
+      <option disabled selected value="">-- Select a Company --</option>
       <option *ngFor="let company of companies" [value]="company">
         {{ company }}
       </option>
@@ -13,13 +13,24 @@
   <!-- Workspace-Liste -->
   <div class="workspace-list">
     <div *ngFor="let workspace of filteredWorkspaces" class="workspace-item">
-      <span class="status-icon" [ngClass]="{ 'active': workspace.isActive, 'inactive': !workspace.isActive }">
+      <span
+        class="status-icon"
+        [ngClass]="{ 'active': workspace.isActive, 'inactive': !workspace.isActive }"
+      >
         ★
       </span>
-      <span class="workspace-name">{{ workspace.Name }}</span>
+
+      <!-- Hier wird der Tooltip automatisch angezeigt -->
+      <span
+        class="workspace-name"
+        [attr.title]="workspace.Name"
+      >
+        {{ workspace.Name }}
+      </span>
+
       <div class="workspace-details">
         <span>{{ workspace.videos }} Vids</span>
-        <div>   </div>
+        <div></div>
         <span>{{ workspace.pictures }} Pics</span>
       </div>
     </div>

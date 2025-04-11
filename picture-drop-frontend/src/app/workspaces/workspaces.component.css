@@ -1,17 +1,19 @@
 .dashboard-container {
   font-family: Arial, sans-serif;
-  max-width: 1200px; /* Besser als vh für Layoutbreite */
+  max-width: 1200px;
   margin: 5px auto;
-  padding: 20px;
+  padding: 10px;
+  max-height: 80vh;
   border: 1px solid #ddd;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   background-color: #fff;
 }
+
 select {
   position: sticky;
   top: 0;
-  z-index: 10;  /* Damit das Menü über anderen Inhalten bleibt */
+  z-index: 10;
   background-color: white;
 }
 
@@ -33,13 +35,9 @@ select {
 }
 
 .workspace-list {
-  margin-bottom: 20px;
-}
-
-.workspace-list-container {
-  min-height: 60vh;
-  max-height: calc(60px * 8); /* Platz für 8 Items */
   overflow-y: auto;
+  margin-bottom: 20px;
+  max-height: 55vh;
   border: 1px solid #eee;
   border-radius: 4px;
   padding: 10px;
@@ -73,6 +71,10 @@ select {
 .workspace-name {
   flex: 1;
   font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 
 .workspace-details {

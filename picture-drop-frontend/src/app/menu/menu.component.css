@@ -13,8 +13,6 @@
   margin-right: 15px;
 }
 
-
-
 .title {
   color: white;
   font-size: 40px;
@@ -49,12 +47,118 @@
   cursor: pointer;
   transition: background 0.2s ease-in-out;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-
-  /* Einheitliche schwarze Border */
   border: 3px solid black;
   border-radius: 8px;
 }
 
 .menu-button:hover {
   background-color: #f0f0f0;
+}
+
+button.logout-button{
+  display: none;
+}
+/* Verstecke mobile Buttons standardmäßig */
+.mobile-nav {
+  display: none;
+}
+
+
+@media (max-width: 768px) {
+  .menu-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    height: auto;
+    padding: 3px 12px;
+  }
+  button.logout-button{
+    display: flex;
+  }
+
+  .logo {
+    width: 75px;
+    height: auto;
+    margin: 0;
+  }
+
+  .title {
+    font-size: 20px;
+    margin: 0 10px;
+    flex: 1;
+  }
+
+  .button-group {
+    display: none; /* Desktop Buttons ausblenden */
+  }
+
+  .logout-button {
+    background-color: white;
+    color: black;
+    font-weight: bold;
+    font-style: italic;
+    border: 2px solid black;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .mobile-nav {
+    display: flex;
+    flex-direction: row;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    align-items: center;
+    width: auto;
+    justify-content: left;
+    border-radius: 3%;
+    background-color: #ffffff;
+    border-color: #f0f0f0;
+    padding: 10px 15px;
+
+    gap: 6px;
+  }
+
+  .mobile-button {
+    position: relative;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 8px;
+    padding: 8px;
+    width: 48px;
+    height: 48px;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease-in-out;
+    margin-left: 7px;
+    margin-right: 7px;
+  }
+
+  .mobile-button span {
+    position: absolute;
+    bottom: -28px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #8B2B2B;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 5px;
+    font-size: 12px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease-in-out;
+    white-space: nowrap;
+    z-index: 10;
+  }
+
+  .mobile-button:hover span {
+    opacity: 1;
+  }
 }
