@@ -2,7 +2,7 @@
   <!-- Unternehmen Auswahl -->
   <div class="company-selector">
     <label for="company"><b>Choose Company</b></label>
-    <select id="company" [(ngModel)]="selectedCompany">
+    <select id="company" [(ngModel)]="selectedCompany"  (ngModelChange)="onCompanyChange()">
       <option value="">-- Select a Company --</option>
       <option *ngFor="let company of companies" [value]="company">
         {{ company }}
@@ -12,11 +12,11 @@
 
   <!-- Workspace-Liste -->
   <div class="workspace-list">
-    <div *ngFor="let workspace of workspaces" class="workspace-item">
+    <div *ngFor="let workspace of filteredWorkspaces" class="workspace-item">
       <span class="status-icon" [ngClass]="{ 'active': workspace.isActive, 'inactive': !workspace.isActive }">
         ★
       </span>
-      <span class="workspace-name">{{ workspace.name }}</span>
+      <span class="workspace-name">{{ workspace.Name }}</span>
       <div class="workspace-details">
         <span>{{ workspace.videos }} Vids</span>
         <div>   </div>
