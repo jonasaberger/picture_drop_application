@@ -53,9 +53,9 @@ export class WorkspacesComponent implements OnInit {
 
       // 🔄 1. Alle Daten gleichzeitig laden
       const [workspaces, submissions, submissionItems] = await Promise.all([
-        this.http.get<Workspace[]>("http://localhost:3000/workspaces").toPromise(),
-        this.http.get<Submission[]>("http://localhost:3000/submissions").toPromise(),
-        this.http.get<SubmissionItem[]>("http://localhost:3000/submission-items").toPromise(),
+        this.http.get<Workspace[]>("http://localhost:3000/api/workspaces").toPromise(),
+        this.http.get<Submission[]>("http://localhost:3000/api/submissions").toPromise(),
+        this.http.get<SubmissionItem[]>("http://localhost:3000/api/submission-items").toPromise(),
       ]);
 
       // Überprüfen, ob die Daten erfolgreich geladen wurden

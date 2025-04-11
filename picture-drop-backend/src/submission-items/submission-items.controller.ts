@@ -3,8 +3,8 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { SubmissionItemsService } from './submission-items.service';
 import { ApiOperation, ApiTags, ApiResponse } from '@nestjs/swagger';
 
-@Controller('submission-items')
 @ApiTags('Submission Items - Controller')
+@Controller('submission-items')
 export class SubmissionItemsController {
   constructor(private readonly submissionItemsService: SubmissionItemsService) {}
 

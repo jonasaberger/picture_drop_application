@@ -17,7 +17,9 @@ async function bootstrap() {
 
   app.useGlobalPipes(new ValidationPipe());
   app.use('/swagger/json', (req, res) => { res.json(document); });
-
+  app.enableCors({
+    origin: 'http://localhost:4200', 
+  });
   
 
   await app.listen(process.env.PORT ?? 3000);
