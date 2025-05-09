@@ -1,18 +1,10 @@
-<!-- Header (rot) -->
 <div class="menu-container">
-
-  <!-- Logo -->
   <img src="/Logo.png" alt="PictureDrop Logo" class="logo" />
-
-  <!-- Titel -->
   <h1 class="title">Admin Panel</h1>
-
-  <!-- Logout-Button (sichtbar auch mobil) -->
   <button class="logout-button" (click)="logout()">
     <i class="fas fa-sign-out-alt"></i>
   </button>
 
-  <!-- Desktop-Navigation (nur auf Desktop sichtbar) -->
   <div class="button-group">
     <button class="menu-button" routerLink="workspaces">
       <span>Workspaces</span>
@@ -33,7 +25,6 @@
   </div>
 </div>
 
-<!-- Mobile-Navigation (nur Icons + Hover-Text) -->
 <div class="mobile-nav">
   <button class="mobile-button" routerLink="workspaces">
     <i class="fas fa-desktop"></i>
