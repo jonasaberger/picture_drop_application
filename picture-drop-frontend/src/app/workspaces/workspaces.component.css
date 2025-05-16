@@ -1,10 +1,11 @@
 .dashboard-container {
   font-family: Arial, sans-serif;
-  max-width: 1200px;
+  max-width: 1250px;
   margin: 10px auto;
+  margin-top: 3%;
   padding: 10px;
-  max-height: 85vh;
-  border: 1px solid #ddd;
+  max-height: 90vh;
+  border: 2px solid #ddd;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   background-color: #fff;
@@ -71,6 +72,7 @@ select {
 .workspace-name {
   flex: 1;
   font-weight: bold;
+  font-size: large;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -85,6 +87,7 @@ select {
 
 .stats-container {
   display: flex;
+  font-size: large;
   justify-content: space-between;
   align-items: flex-start;
   flex-wrap: wrap;
@@ -94,10 +97,11 @@ select {
 
 .total-stats div {
   margin-bottom: 5px;
-  font-size: 14px;
+  font-size: large;
 }
 
 .legend {
+  font-size: large;
   display: flex;
   flex-direction: column;
   gap: 5px;
