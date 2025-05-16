@@ -44,14 +44,19 @@ export class StatisticsComponent implements AfterViewInit {
   selectedYear = '';
 
   isLoading = true;
+  viewInitialized = false;
+  dataLoaded = false;
 
   constructor(private http: HttpClient, private cdRef: ChangeDetectorRef) {}
 
   ngAfterViewInit(): void {
-    this.loadData();
+    this.viewInitialized = true;
+    this.tryCreateChartAfterLoad();
   }
 
   private async loadData(): Promise<void> {
+    console.log("LOAD DIAGRAM");
+
     try {
       this.isLoading = true;
 
@@ -77,16 +82,23 @@ export class StatisticsComponent implements AfterViewInit {
 
       aggregateStats(workspaces, submissions, submissionItems);
 
-      // Initialize with all submission items on first load
       this.filteredSubmissionItems = [...this.allSubmissionItems];
 
-      // Create chart immediately after data is loaded
-      this.createChart();
+      this.dataLoaded = true;
+      this.tryCreateChartAfterLoad();
     } catch (err) {
       console.error('Error loading data:', err);
     } finally {
       this.isLoading = false;
       this.cdRef.detectChanges();
+    }
+  }
+
+  private tryCreateChartAfterLoad(): void {
+    if (this.viewInitialized && this.dataLoaded && this.chartCanvas?.nativeElement) {
+      this.createChart();
+    } else {
+      setTimeout(() => this.tryCreateChartAfterLoad(), 50);
     }
   }
 
@@ -117,15 +129,17 @@ export class StatisticsComponent implements AfterViewInit {
   }
 
   private createChart(): void {
-    if (!this.chartCanvas?.nativeElement) return;
+    if (!this.chartCanvas?.nativeElement) {
+      console.log("No chart canvas");
+      return;
+    }
 
-    // Destroy previous chart if it exists
     if (this.chart) {
       this.chart.destroy();
     }
 
-    // Only create chart if we have data
     if (this.filteredSubmissionItems.length > 0) {
+      console.log("Create chart");
       this.chart = ChartService.createChart(
         this.chartCanvas.nativeElement,
         this.filteredSubmissionItems,
@@ -134,6 +148,8 @@ export class StatisticsComponent implements AfterViewInit {
         this.selectedWorkspace,
         this.availableWorkspaces
       );
+    } else {
+      console.log("No data to display");
     }
   }
 
@@ -172,5 +188,9 @@ export class StatisticsComponent implements AfterViewInit {
 
   private getWorkspace(id: number): Workspace | undefined {
     return this.workspaces.find(ws => ws.Id === id);
+  }
+
+  ngOnInit(): void {
+    this.loadData();
   }
 }
