@@ -27,6 +27,7 @@ export class WorkspacesComponent implements OnInit {
   constructor(private http: HttpClient, private cdRef: ChangeDetectorRef) {}
 
   ngOnInit(): void {
+    console.log('test')
     this.loadData(); // Initiales Laden der Daten
   }
 
@@ -63,9 +64,8 @@ export class WorkspacesComponent implements OnInit {
     }
   }
 
-  // 3. Filter nach Firma
+  // Filter nach Firma
   filterWorkspaces(): void {
-
     if (this.selectedCompany === "All") {
       this.filteredWorkspaces = [...this.workspaces];
     } else {
