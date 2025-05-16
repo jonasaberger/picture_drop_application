@@ -123,5 +123,4 @@ export class VouchersControllerService extends BaseService {
       map((r: StrictHttpResponse<Vouchers>): Vouchers => r.body)
     );
   }
-
 }

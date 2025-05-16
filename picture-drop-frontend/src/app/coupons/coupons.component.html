@@ -1,19 +1,18 @@
 <div class="dashboard-container">
   <div class="company-selector">
     <label for="company">Choose Company</label>
-    <select id="company" [(ngModel)]="selectedCompany">
-      <option value="">-- Select a Company --</option>
+    <select id="company" [(ngModel)]="selectedCompany" (ngModelChange)="onCompanyChange()">
       <option *ngFor="let company of companies" [value]="company">{{company}}</option>
     </select>
   </div>
 
   <div class="workspace-list-container">
     <div class="workspace-list">
-      <div *ngFor="let workspace of workspaces" class="workspace-item">
-        <div class="workspace-name">{{workspace.name}}</div>
+      <div *ngFor="let workspace of filteredWorkspaces" class="workspace-item">
+        <div class="workspace-name">{{workspace.Name}}</div>
         <div class="coupon-boxes">
-          <div class="coupon-box redeemed">{{workspace.redeemedCoupons}}</div>
-          <div class="coupon-box unredeemed">{{workspace.unredeemedCoupons}}</div>
+          <div class="coupon-box redeemed">{{workspace.redeemedVouchers.length}}</div>
+          <div class="coupon-box unredeemed">{{workspace.unredeemedVouchers.length}}</div>
         </div>
       </div>
     </div>
@@ -21,9 +20,9 @@
 
   <div class="stats-container">
     <div class="total-stats">
-      <div>Total coupons: {{totalCoupons}}</div>
-      <div>Total redeemed coupons: {{totalRedeemed}}</div>
-      <div>Total unredeemed coupons: {{totalUnredeemed}}</div>
+      <div>Total coupons: {{vouchers.length}}</div>
+      <div>Total redeemed coupons: {{redeemedVouchers.length}}</div>
+      <div>Total unredeemed coupons: {{unredeemedVouchers.length}}</div>
     </div>
 
     <div class="legend">

@@ -5,5 +5,5 @@
 export interface Vouchers {
   Id: string;
   ValidatedOn: string;
-  WorkspaceId: string;
+  WorkspaceId: number;
 }
