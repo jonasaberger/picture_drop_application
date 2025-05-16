@@ -1,10 +1,11 @@
 .dashboard-container {
   font-family: Arial, sans-serif;
   max-width: 1250px;
-  margin: 10px auto;
-  margin-top: 3%;
+  width: auto;
+  margin: 2% auto;
   padding: 10px;
-  max-height: 90vh;
+  height: 78vh;
+  max-height: 120vh;
   border: 2px solid #ddd;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -37,7 +38,7 @@ select {
 
 .workspace-list {
   overflow-y: auto;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   max-height: 55vh;
   border: 1px solid #eee;
   border-radius: 4px;
@@ -48,6 +49,7 @@ select {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  height: 40px;
   padding: 10px 0;
   border-bottom: 1px solid #eee;
 }
@@ -96,6 +98,7 @@ select {
 }
 
 .total-stats div {
+  margin-top: 2%;
   margin-bottom: 5px;
   font-size: large;
 }
