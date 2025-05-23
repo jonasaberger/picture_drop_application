@@ -1,7 +1,6 @@
 import { Routes } from '@angular/router';
 import { CouponsComponent} from './coupons/coupons.component';
 import {StatisticsComponent} from './statistics/statistics.component';
-import {LoginComponent} from './login/login.component';
 import {WorkspacesComponent} from './workspaces/workspaces.component';
 import {canActivate} from './guard/customGuard';
 
