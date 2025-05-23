@@ -1,6 +1,7 @@
 .dashboard-container {
   padding: 20px;
   font-family: Arial, sans-serif;
+  font-size: 20px;
 }
 
 .options-selector {
@@ -19,12 +20,14 @@
 
 .sub-selectors-container {
   display: flex;
+  font-size: large;
   gap: 10px;
 }
 
 .sub-selector select {
   flex: 1;
   padding: 8px;
+  font-size: 14px;
   border-radius: 4px;
   border: 1px solid #ccc;
 }
@@ -53,14 +56,15 @@
 }
 
 .chart-container {
-  margin-top: 30px;
-  width: 100%;
-  max-width: 900px;
+  margin: 30px;
+  margin-top: 40px;
+  min-width: 60%;
+  max-width: 90%;
 }
 
 canvas {
   width: 100% !important;
-  height: 400px !important;
+  height: 700px !important;
 }
 
 /* Responsive adjustments */
