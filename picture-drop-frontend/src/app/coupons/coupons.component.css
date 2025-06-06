@@ -6,7 +6,7 @@
   border: 1px solid #ddd;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  max-height: 90vh;
+  max-height: 100%;
 }
 
 .company-selector {
@@ -27,13 +27,13 @@
 }
 
 .workspace-list-container {
-  min-height: 60vh;
+  min-height: 47vh;
   overflow-y: auto;
   margin-bottom: 20px;
   border: 1px solid #eee;
   border-radius: 4px;
   padding: 10px;
-  max-height: 60vh;
+  max-height: 47vh;
 }
 
 .workspace-item {

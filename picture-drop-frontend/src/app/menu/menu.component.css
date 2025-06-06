@@ -115,7 +115,7 @@ button.logout-button{
     width: auto;
     justify-content: space-evenly;
     border-radius: 3%;
-    background-color: #ffffff;
+    background-color: dimgrey;
     border-color: #f0f0f0;
     padding: 10px 15px;
 
@@ -124,7 +124,7 @@ button.logout-button{
 
   .mobile-button {
     position: relative;
-    background-color: white;
+    background-color: black;
     border: 2px solid black;
     border-radius: 8px;
     padding: 8px;

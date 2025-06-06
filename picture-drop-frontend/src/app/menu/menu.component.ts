@@ -12,9 +12,7 @@ import {Router, RouterLink} from '@angular/router';
 export class MenuComponent {
 
   constructor(private router: Router) {
-
   }
-
 
   logout() {
     // Hier deine Logout-Logik z.B. Session löschen

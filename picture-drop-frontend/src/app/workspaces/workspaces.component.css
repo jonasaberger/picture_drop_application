@@ -4,19 +4,22 @@
   width: auto;
   margin: 2% auto;
   padding: 10px;
-  height: 78vh;
-  max-height: 120vh;
-  border: 2px solid #ddd;
+  height: 75vh;
+  max-height: 110vh;
+  border: 1px solid #444;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(255, 255, 255, 0.05);
+  background-color: #1e1e1e;
+  color: #e0e0e0;
 }
 
 select {
   position: sticky;
   top: 0;
   z-index: 10;
-  background-color: white;
+  background-color: #2c2c2c;
+  color: #e0e0e0;
+  border: 1px solid #555;
 }
 
 .company-selector {
@@ -27,22 +30,26 @@ select {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
+  color: #ccc;
 }
 
 .company-selector select {
   width: 100%;
   padding: 8px;
-  border: 1px solid #ccc;
+  border: 1px solid #555;
   border-radius: 4px;
+  background-color: #2c2c2c;
+  color: #e0e0e0;
 }
 
 .workspace-list {
   overflow-y: auto;
   margin-bottom: 40px;
-  max-height: 55vh;
-  border: 1px solid #eee;
+  max-height: 47vh;
+  border: 1px solid #444;
   border-radius: 4px;
   padding: 10px;
+  background-color: #2a2a2a;
 }
 
 .workspace-item {
@@ -51,7 +58,7 @@ select {
   justify-content: space-between;
   height: 40px;
   padding: 10px 0;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #3a3a3a;
 }
 
 .workspace-item:last-child {
@@ -79,12 +86,14 @@ select {
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 100%;
+  color: #fafafa;
 }
 
 .workspace-details {
   display: flex;
   gap: 15px;
   font-size: 14px;
+  color: #bbb;
 }
 
 .stats-container {
@@ -101,6 +110,7 @@ select {
   margin-top: 2%;
   margin-bottom: 5px;
   font-size: large;
+  color: #ddd;
 }
 
 .legend {
@@ -108,6 +118,7 @@ select {
   display: flex;
   flex-direction: column;
   gap: 5px;
+  color: #ccc;
 }
 
 .legend-item {
@@ -120,4 +131,5 @@ select {
   width: 20px;
   height: 20px;
   border-radius: 4px;
+  border: 1px solid #666;
 }
