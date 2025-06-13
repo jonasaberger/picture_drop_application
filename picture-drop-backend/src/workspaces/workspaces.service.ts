@@ -21,4 +21,8 @@ export class WorkspacesService {
   async remove(Id: number) {
     return await this.workspaceRepository.delete(Id);
   }
+
+  sumFunction(a: number, b: number) {
+    return a + b;
+  }
 }
